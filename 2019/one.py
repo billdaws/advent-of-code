@@ -20,6 +20,10 @@ def get_fuel_v2(mass: int) -> int:
     
 
 def get_total_fuel(filepath: str, fuel_func: Callable[[int], int]) -> int:
+    """Returns the amount of fuel for all the masses listed in the given file.
+    Uses `fuel_func` to calculate how much fuel is needed for each mass specified
+    in the given file.
+    """
     with open(filepath, "r") as infile:
         masses = [int(mass.strip()) for mass in infile.readlines()]
 

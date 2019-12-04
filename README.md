@@ -8,4 +8,4 @@ I'll also be recording notes (like todos) in this file.
 ## Notes
 ### TODOs
 * the boilerplate for reading from files would probably be better as a package
-* finish day 2 part 2
+* finish [day 2 part 2](https://adventofcode.com/2019/day/2#part2)

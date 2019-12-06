@@ -39,11 +39,9 @@ EOM
 > "${day_path}/test_${day}.py"
 
 current_branch=$(git branch | grep "*" | awk '{print $2}')
-if [[ "${current_branch}" == "master" ]]; then
-    git checkout -b "${new_branch}"
-    git push --set-upstream origin "${new_branch}"
-else
+if [[ "${current_branch}" != "master" ]]; then
     git checkout master
-    git checkout -b "${new_branch}"
-    git push --set-upstream origin "${new_branch}"
 fi
+
+git checkout -b "${new_branch}"
+git push --set-upstream origin "${new_branch}"

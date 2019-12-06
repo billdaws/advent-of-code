@@ -25,7 +25,8 @@ fi
 
 year=${1}
 day=${2}
-day_path="${year}/day_${day}"
+new_branch="day_${day}"
+day_path="${year}/${new_branch}"
 mkdir -p "${day_path}"
 
 cat <<EOM > "${day_path}/${day}.py"
@@ -36,3 +37,11 @@ EOM
 
 > "${day_path}/${day}_input.txt"
 > "${day_path}/test_${day}.py"
+
+current_branch=$(git branch | grep "*" | awk '{print $2}')
+if [[ "${current_branch}" != "master" ]]; then
+    git checkout master
+fi
+
+git checkout -b "${new_branch}"
+git push --set-upstream origin "${new_branch}"

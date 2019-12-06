@@ -6,6 +6,11 @@ def is_six_digits(x: int) -> bool:
     return len(str(x)) == 6
 
 def within_range(x: int, lo: int, hi: int) -> bool:
+    """This function isn't actually necessary given how I'll be generating the
+    input.
+
+    Oh well.
+    """
     return lo <= x <= hi
 
 def has_adjacent_double(x: int) -> bool:
@@ -36,3 +41,18 @@ def digits_never_decrease(x: int) -> bool:
     
     return True
     
+
+if __name__ == "__main__":
+    with open(inpath, "r") as f:
+        str_lo, str_hi = f.read().split("-")
+        lo = int(str_lo)
+        hi = int(str_hi)
+
+    accepted = 0
+    for x in range(lo, hi + 1):
+        if is_six_digits(x) and \
+            has_adjacent_double(x) and \
+            digits_never_decrease(x):
+            accepted += 1
+
+    print(accepted)
